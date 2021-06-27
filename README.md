@@ -104,7 +104,7 @@
 		<h2>Contribuições</h2>
 		<ul>
 			<li>Ítalo Carvalho</li>
-			<li>Dawidson Gaiao</li>
+			<li>Dawidson Pereira</li>
 			<li>Michel Domingues</li>
 		</ul>
 	</body>
