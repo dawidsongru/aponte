@@ -1,4 +1,4 @@
-# Sistema Aponte
+﻿# Sistema Aponte
 <p align= "justify">O "Sistema Aponte" foi desenvolvido com a finalidade de ser <strong>"A ponte"</strong>, ou seja, um facilitador de comunicação entre o morador de uma determinada rua e a Prefeitura da sua cidade, juntamente com outras empresas da região, para que o morador informe o(s) problema(s) da sua rua e este(s) seja(m) resolvido(s) com mais rapidez e eficiência. </p>		
 <h3>Tabela de conteúdos</h3>
 		<ul>
@@ -104,7 +104,7 @@
 		<h2>Contribuições</h2>
 		<ul>
 			<li>Ítalo Carvalho</li>
-			<li>Dawidson Gaiao</li>
+			<li>Dawidson Pereira</li>
 			<li>Michel Domingues</li>
 		</ul>
 	</body>
