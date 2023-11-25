@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -36,6 +37,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/index', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
     Route::put('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
+
+    //categories
+    Route::resources([
+        'categories' => CategoryController::class,
+    ]);
 });
 
 require __DIR__.'/auth.php';

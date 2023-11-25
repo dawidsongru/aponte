@@ -15,12 +15,16 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    
+
                     @can('level', 'admin')
+                    <x-nav-link :href="route('categories.create')" :active="request()->routeIs('categories.create')">
+                        {{ __('Categorias') }}
+                    </x-nav-link>
+                    @endcan
+                     
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Lista de Usuários') }}
                     </x-nav-link>
-                    @endcan
 
                 </div>
             </div>
