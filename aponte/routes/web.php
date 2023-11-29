@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,11 @@ Route::middleware('auth')->group(function () {
     //categories
     Route::resources([
         'categories' => CategoryController::class,
+    ]);
+
+    //posts
+    Route::resources([
+        'posts' => PostController::class,
     ]);
 });
 

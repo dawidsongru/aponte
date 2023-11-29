@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="bg-gray-100 p-4 rounded overflow-hidden">
-                           <input type="submit" value="Cadastrar" class="bg-blue-500 text-white rounded p-2 cursor-pointer">
+                           <input type="submit" value="Cadastrar" class="bg-green-600 text-white rounded p-2 cursor-pointer" style="background-color: rgb(79, 79, 163)">
                            <input type="reset" value="Limpar" class="bg-red-500 text-white rounded p-2 cursor-pointer">
                         </div>
                     </fieldset>
