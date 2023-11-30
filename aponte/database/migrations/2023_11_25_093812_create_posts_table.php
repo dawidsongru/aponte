@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('titulo')->unique();
             $table->text('descricao');
-            $table->string('status')->default('pendente');
+            $table->string('status');
             $table->string('imagem')->nullable();
-            $table->foreignId('user_id')->constrained('users');
+            $table->string('telefone');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('categoria_id')->constrained('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
