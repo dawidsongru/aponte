@@ -103,8 +103,8 @@
 			<p>Java.</p>
 		<h2>Contribuições</h2>
 		<ul>
-			<li>Ítalo Carvalho</li>
 			<li>Dawidson Pereira</li>
+			<li>Ênrell<li>
 			<li>Michel Domingues</li>
 		</ul>
 	</body>
