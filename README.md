@@ -1,111 +1,84 @@
 # Sistema Aponte
-<p align= "justify">O "Sistema Aponte" foi desenvolvido com a finalidade de ser <strong>"A ponte"</strong>, ou seja, um facilitador de comunicação entre o morador de uma determinada rua e a Prefeitura da sua cidade, juntamente com outras empresas da região, para que o morador informe o(s) problema(s) da sua rua e este(s) seja(m) resolvido(s) com mais rapidez e eficiência. </p>		
-<h3>Tabela de conteúdos</h3>
-		<ul>
-			<li>Sobre</li>
-			<li>Funcionalidades</li>
-			<li>Layout</li>
-				<ul>
-					<li>Mobile</li>
-					<li>Web</li>
-				</ul>
-			<li>Como executar o projeto</li>
-				<ul>
-					<li>Pre-requesitos</li>
-					<li>Rodando o Servidor (Backend)</li>
-					<li>Rodando a aplicação web (Frontend)</li>
-				</ul>	
-			<li>Tecnologias</li>
-				<ul>
-					<li>WebSite</li>
-					<li>Server</li>
-					<li>Mobile</li>
-				</ul>
-			<li>Contribuições</li>
-		</ul>
-<h3>Como usar</h3>
-			<ol>
-				<li>Acesse o site
-					<a href="http://aponte.infinityfreeapp.com/" target="_blank">http://aponte.infinityfreeapp.com/</a>
-				</li>
-				<li>Se ainda não for cadastrado, 
-					<a href="http://aponte.infinityfreeapp.com/register.php" target="_blank">Cadastre-se</a>.
-				</li>
-				<li>Se já for cadastrado, 
-					<a href="http://aponte.infinityfreeapp.com/login.php" target="_blank">Acesse o sistema Aponte</a>.
-				</li>
-			</ol>
-<h3>Funcionalidades</h3>
-			<ul>
-				<li>Cadastro de usuários;</li>
-				<li>Login;</li>
-				<li>Recuperação de senhas;</li>
-				<li>Registro de suas solicitações:</li>
-					<ul>
-						<li>Inclusão da localização;</li>
-						<li>Inclusão de fotografias;</li>
-						<li>Com a possibilidade de realização de varias solicitações, inclusive.</li>
-					</ul>
-			</ul>
-<h3>Layout</h3>
-			<h4>Mobile</h4>
-				<p>Aqui vai um imagem de baixa ou media qualidade para mobile</p>
-				<img src="asdf">
-			<h4>Web</h4>
-				<p>Aqui vai um imagem de baixa ou media qualidade para web</p>
-				<img src="asdf">
-		<h3>Como executar o projeto</h3>
-			<h4>Pre-requesitos</h4>
-				<p>Conexão com a Internet para registro de sua solicitação e câmera para captura da fotografia.</p>
-			<h4>Rodando o Backend (Servidor)</h4>
-		
-	    # Clone este repositório
-		  $ git clone git@github.com:italo-carvavalho/README-aponte.git
 
-		  # Acesse a pasta do projeto no terminal/cmd
-		  $ cd README-aponte
+O **Sistema Aponte** foi desenvolvido com o propósito de ser uma **ponte** entre os moradores de uma determinada rua e a Prefeitura de sua cidade, bem como outras empresas da região. O objetivo é facilitar a comunicação para que os problemas relatados pelos moradores sejam resolvidos de forma mais rápida e eficiente.
 
-		  # Vá para a pasta server
-		  $ cd server
+## Como Usar
 
-		  # Instale as dependências
-		  $ npm install
+1. Acesse o site [Sistema Aponte](http://aponte.infinityfreeapp.com/).
+2. Se ainda não for cadastrado, [cadastre-se](http://aponte.infinityfreeapp.com/register.php).
+3. Se já for cadastrado, [acesse o Sistema Aponte](http://aponte.infinityfreeapp.com/login.php).
 
-		  # Execute a aplicação em modo de desenvolvimento
-		  $ npm run dev:server
+## Funcionalidades
 
-		  # O servidor inciará na porta:3333 - acesse http://localhost:3333 
-<h4>Rodando a aplicação web (Frontend)</h4>
+O Sistema Aponte oferece as seguintes funcionalidades:
 
-			# Clone este repositório
-			$ git clone git@github.com:italo-carvavalho/README-aponte.git
+- **Registro de Problemas:** Os moradores podem criar posts sobre os problemas em suas ruas.
+- **Feedback em Tempo Real:** Receba feedbacks sobre o andamento do problema, incluindo:
+  - **Localização:** Inclusão da localização para uma melhor identificação.
+  - **Fotografias:** Anexe imagens para uma compreensão mais clara.
+  - **Múltiplas Solicitações:** Possibilidade de realizar várias solicitações.
 
-			# Acesse a pasta do projeto no seu terminal/cmd
-			$ cd README-aponte
+## Layout
 
-			# Vá para a pasta da aplicação Front End
-			$ cd web
+### Mobile
 
-			# Instale as dependências
-			$ npm install
+![Mobile Layout](asdf) <!-- Adicione aqui a imagem de baixa ou média qualidade para mobile -->
 
-			# Execute a aplicação em modo de desenvolvimento
-			$ npm run start
+### Web
 
-			# A aplicação será aberta na porta:3000 - acesse http://localhost:3000
-<h2>Tecnologias</h2>
-<h3>WebSite</h3>
-			<p>Tailwind</p>
-			<p>Laravel</p>
-			<h3>Server</h3>
-			<p>PHP 7.4</p>
-			<h3>Mobile</h3>
-			<p>Java.</p>
-		<h2>Contribuições</h2>
-		<ul>
-			<li>Ítalo Carvalho</li>
-			<li>Dawidson Pereira</li>
-			<li>Michel Domingues</li>
-		</ul>
-	</body>
-</html>
+![Web Layout](asdf) <!-- Adicione aqui a imagem de baixa ou média qualidade para web -->
+
+## Como Executar o Projeto
+
+### Pré-requisitos
+
+- Git
+- php 8.2
+- Composer
+- Nodejs
+- npm
+- Docker compose
+
+### Rodando o Backend (Servidor)
+
+```bash
+# Clone este repositório
+$ git clone https://github.com/dawidsongru/aponte.git
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd aponte/aponte
+
+# Rode o banco de dados
+$ docker compose up -d
+
+# Instale as dependências
+$ composer install && npm install
+
+# Migre o banco de dados. OBS: caso você tenha o mysql rodando na porta 3306,
+# será necessário parar o serviço ou trocar a porta.
+$ php artisan migrate --seed
+
+# Gere a chave da aplicação
+$ php artisan key:generate
+
+# Execute a aplicação
+$ npm run dev & php artisan serve
+```
+### Ela abrirá no localhost:8000
+
+## Tecnologias
+
+### WebSite
+
+- Tailwind
+- Laravel
+- Nodejs
+- Docker
+
+## Contribuições
+
+Agradecemos aos seguintes contribuidores:
+
+- Dawidson Pereira
+- Ênrell Jeronimo
+- Ivan Teotônio
