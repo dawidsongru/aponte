@@ -1,16 +1,15 @@
 version: '3.1'
-
+volumes:
+  data:
 services:
-  mysql:
-    image: mysql:8.2.0
-    container_name: meu-mysql
-    restart: always
+  db:
+    image: mariadb:lts-jammy
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: aponte
       MYSQL_DATABASE: aponte
       MYSQL_USER: aponte
       MYSQL_PASSWORD: aponte
+    volumes:
+      - data:/var/lib/mysql
     ports:
       - "3306:3306"
-    volumes:
-      - ./dados_mysql:/var/lib/mysql
