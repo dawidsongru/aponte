@@ -1,8 +1,7 @@
 version: '3.1'
-volumes:
-  data:
+
 services:
-  db:
+  mariadb:
     image: mariadb:lts-jammy
     environment:
       MYSQL_ROOT_PASSWORD: aponte
@@ -13,3 +12,18 @@ services:
       - data:/var/lib/mysql
     ports:
       - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: aponte
+    ports:
+      - "8080:80"
+    depends_on:
+      - mariadb
+    
+volumes:
+  data:
