@@ -54,6 +54,9 @@ $ docker compose up -d
 # Instale as dependências
 $ composer install && npm install
 
+# Crie o .env
+$ cp .env.example .env
+
 # Migre o banco de dados. OBS: caso você tenha o mysql rodando na porta 3306,
 # será necessário parar o serviço ou trocar a porta.
 $ php artisan migrate --seed
