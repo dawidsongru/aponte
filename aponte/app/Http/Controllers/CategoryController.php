@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -36,12 +36,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $categorias =new Category();
+        $categorias = new Category();
         $categorias->name = $request->name;
         $categorias->save();
+
         return redirect()->route('categories.create');
-       
+
         $categorias = Category::all();
+
         return response()->json(['categorias' => $categorias]);
 
     }
@@ -52,7 +54,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
-    
+
         return response()->json(['categoria' => $category]);
     }
 
@@ -72,12 +74,12 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
-    
+
         $categoria = Category::findOrFail($id);
         $categoria->update([
             'name' => $request->name,
         ]);
-    
+
         return response()->json(['message' => 'Categoria atualizada com sucesso'], 200);
     }
 
@@ -96,7 +98,4 @@ class CategoryController extends Controller
             return response()->json(['error' => 'Erro ao excluir a categoria'], 500);
         }
     }
-
-
-
 }

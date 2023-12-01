@@ -15,7 +15,7 @@ class Post extends Model
         'status',
         'imagem',
         'telefone',
-        'user_id'
+        'user_id',
     ];
 
     public function post()

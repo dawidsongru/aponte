@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\User;
+//use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -16,7 +16,7 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('users.index',[
+        return view('users.index', [
             'users' => DB::table('users')->orderBy('name')->paginate(10),
         ]);
     }
@@ -50,7 +50,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        return view('users.edit',[
+        return view('users.edit', [
             'user' => User::findOrFail($id),
         ]);
     }
@@ -58,13 +58,14 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-       //User::findOrFail($id->id)->update($id->all());
-       //return redirect()->route('users.index');
-       $user = User::findOrFail($id);
-       $user->update($request->all());
-       return redirect()->route('users.index');
+        //User::findOrFail($id->id)->update($id->all());
+        //return redirect()->route('users.index');
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        return redirect()->route('users.index');
     }
 
     /**
