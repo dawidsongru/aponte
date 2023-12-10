@@ -11,6 +11,17 @@
                 <div class="p-6 text-gray-900">
                     <p class="mb-4">Olá <strong>{{ Auth::user()->name }}</strong></p>
                 </div>
+
+
+            
+                @if(session('success'))
+                <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+                </div>
+                @endif
+            
             
         
             <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
@@ -37,12 +48,18 @@
                     </div>
 
                     <div class="bg-gray-100 p-4 rounded overflow-hidden mb-4">
-                        <label for="name">Telefone</label>
+                        <label for="telefone">Telefone</label>
                         <input placeholder="Digite seu telefone" maxlength="15" onkeyup="handlePhone(event)" type="text" name="telefone" id="titulo" class="w-full rounded required autofocus">
                     </div>
 
                     <div class="bg-gray-100 p-4 rounded overflow-hidden mb-4">
-  <textarea rows="6" type="text" name="descricao" id="descricao" class="w-full rounded required autofocus">Descrição</textarea>
+                        <label for="endereco">Endereço</label>
+                        <input placeholder="Digite o endereço" type="text" name="endereco" id="endereco" class="w-full rounded required autofocus">
+                    </div>
+
+                    <div class="bg-gray-100 p-4 rounded overflow-hidden mb-4">
+                        <label for="descricao">Descrição</label>
+                        <textarea rows="6" type="text" name="descricao" id="descricao" class="w-full rounded required autofocus"></textarea>
                     </div>
 
                     <div class="bg-gray-100 p-4 rounded overflow-hidden">

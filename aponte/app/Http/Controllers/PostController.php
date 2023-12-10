@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -28,9 +30,28 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUpdateRequest $request)
     {
-        dd($request->all());
+
+        $image_path = $request->file('imagem')->store('posts', 'public');
+        $data['imagem'] = $image_path;
+        
+        // Upload da imagem
+       $image_path = $request->file('imagem')->store('posts', 'public');
+
+       // Criação do post
+       $post = Post::create([
+        'user_id' => $request->input('user_id'),
+        'titulo' => $request->input('titulo'),
+        'categoria_id' => $request->input('categoria_id'),
+        'telefone' => $request->input('telefone'),
+        'status' => 'Pendente', // 'pendente'
+        'endereco' => $request->input('endereco'),
+        'descricao' => $request->input('descricao'),
+        'imagem' => $image_path,
+        ]);
+        
+        return redirect()->route('posts.create')->with('success', 'Post cadastrado com sucesso!');
     }
 
     /**

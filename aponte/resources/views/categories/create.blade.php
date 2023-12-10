@@ -152,6 +152,7 @@
             });
         });
 
+
         // Exclusão de Categoria
         $(document).on('click', '.excluirCategoria', function() {
             var categoriaId = $(this).data('id');

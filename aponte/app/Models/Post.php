@@ -15,11 +15,13 @@ class Post extends Model
         'status',
         'imagem',
         'telefone',
+        'categoria_id',
+        'endereco',
         'user_id',
     ];
 
-    public function post()
+    public function user()
     {
-        return $this->hasMany(Postagem::class);
+        return $this->belongsTo(User::class);
     }
 }
