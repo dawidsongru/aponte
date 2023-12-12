@@ -14,7 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::orderBy('created_at', 'desc')->paginate(6);
+        return view('posts.index', ['posts' => $posts]);
+
     }
 
     /**
@@ -22,7 +24,9 @@ class PostController extends Controller
      */
     public function create()
     {
+       
         $categorias = Category::all();
+        
 
         return view('posts.create', ['categorias' => $categorias]);
     }
