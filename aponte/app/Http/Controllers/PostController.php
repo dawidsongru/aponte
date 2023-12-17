@@ -14,7 +14,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(6);
+        $userId = auth()->user()->id;
+
+        $posts = Post::where('user_id', $userId)
+        ->orderBy('created_at', 'desc')
+        ->paginate(6);
+    
         return view('posts.index', ['posts' => $posts]);
 
     }

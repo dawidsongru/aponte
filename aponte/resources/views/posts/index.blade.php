@@ -2,7 +2,6 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Minhas Postagens') }}
@@ -14,7 +13,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <p class="mb-4">Olá <strong>{{ Auth::user()->name }}</strong></p>
-
+                    @if($posts->isEmpty())
+                    <p>Não há posts criados.</p>
+                    @else
                     <table class="table">
                         <thead>
                             <tr>
@@ -30,7 +31,7 @@
                             <tr>
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->titulo }}</td>
-                                 <td>{{ $post->category->name }}</td> 
+                                <td>{{ $post->category->name }}</td>
                                 <td>{{ $post->status }}</td>
                                 <td>
                                     <button class="btn btn-primary" onclick="verPost({{ json_encode($post) }})">Ver</button>
@@ -81,11 +82,12 @@
             document.getElementById('post_titulo').innerText = post.titulo;
             document.getElementById('post_categoria').innerText = post.category.name;
             document.getElementById('post_status').innerText = post.status;
-            document.getElementById('post_imagem').src = "{{ asset($post->imagem) }}";
+            document.getElementById('post_imagem').src = "{{ asset('storage/' . $post->imagem) }}";
             document.getElementById('post_descricao').innerText = post.descricao;
 
             // Mostrar o modal
             $('#verPostModal').modal('show');
         }
     </script>
+    @endif
 </x-app-layout>

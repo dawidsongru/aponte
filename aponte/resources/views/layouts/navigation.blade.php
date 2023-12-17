@@ -21,10 +21,12 @@
                         {{ __('Categorias') }}
                     </x-nav-link>
                     @endcan
-                     
+                    
+                    @can('level', 'admin')
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Lista de Usuários') }}
                     </x-nav-link>
+                    @endcan
 
                     <x-nav-link :href="route('posts.create')" :active="request()->routeIs('posts.create')">
                         {{ __('Criar Postagem') }}

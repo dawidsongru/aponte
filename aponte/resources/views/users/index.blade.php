@@ -25,9 +25,7 @@
                                 <th class="p-4">Nome</th>
                                 <th>Email</th>
                                 <th>Data de cadastro</th>
-                                @can('level', 'admin')
                                 <th class="text-center">Ações</th>
-                                @endcan
                             </tr>
                         </thead>
                         <tbody>
