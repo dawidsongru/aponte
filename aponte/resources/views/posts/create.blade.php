@@ -69,7 +69,7 @@
                     
 
                     <div class="bg-gray-100 p-4 rounded overflow-hidden">
-                       <input type="submit" value="Cadastrar" class="bg-green-600 text-white rounded p-2 cursor-pointer" style="background-color: rgb(79, 79, 163)">
+                       <button type="submit"  class="bg-green-600 text-white rounded p-2 cursor-pointer" style="background-color: rgb(79, 79, 163)">Cadastrar</button>
                        <input type="reset" value="Limpar" class="bg-red-500 text-white rounded p-2 cursor-pointer">
                     </div>
                 </fieldset>
@@ -83,7 +83,49 @@
 
 <script>
 
-
+   function() {
+       $('#submit').click(function() {
+          let data ={
+            const data = {
+                // Preencha os campos com os valores dos respectivos inputs do formulário
+                titulo: $('#titulo').val(),
+                categoria_id: $('#categoria_id').val(),
+                telefone: $('#telefone').val(),
+                endereco: $('#endereco').val(),
+                descricao: $('#descricao').val(),
+                imagem: $('#imagem')[0].files[0], // Cuidado! Verifique se existe algum arquivo selecionado antes de acessar o primeiro elemento do array
+                user_id: '{{ Auth::user()->id }}', // Substitua pelo valor real do ID do usuário autenticado
+                };
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('posts.store') }}',
+                    data: data,
+                    enctype: 'multipart/form-data',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                },
+                success: function(response) {
+                // Se a requisição for bem-sucedida
+                    if (response.success) {
+                        // Exibir uma mensagem de sucesso
+                        $('#success-message').text('Usuário criado com sucesso!').show();
+                    } else {
+                        // Se a requisição falhar
+                        // Exibir os erros
+                        alert(response.errors);
+                    }
+                },
+                error: function(error) {
+                    // Se a requisição falhar
+                    // Exibir um erro no console
+                    console.error(error);
+                }
+       });
+    }
 
 
  // Mascara para telefone

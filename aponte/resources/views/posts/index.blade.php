@@ -34,9 +34,15 @@
                                 <td>{{ $post->category->name }}</td>
                                 <td>{{ $post->status }}</td>
                                 <td>
-                                    <button class="btn btn-primary" onclick="verPost({{ json_encode($post) }})">Ver</button>
-                                    <button class="btn btn-warning">Editar</button>
-                                    <button class="btn btn-danger">Excluir</button>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-primary" onclick="verPost({{ json_encode($post) }})">Ver</button>
+                                        <button class="btn btn-warning" style="margin-left: 5px">Editar</button>
+                                        <form method="POST" action="{{ route('posts.destroy', $post->id) }}" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" style="margin-left: 5px;">Excluir</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
@@ -75,6 +81,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
+    
+
+
+   
+
+
     <script>
         function verPost(post) {
             // Preencher os dados no modal
@@ -82,12 +94,14 @@
             document.getElementById('post_titulo').innerText = post.titulo;
             document.getElementById('post_categoria').innerText = post.category.name;
             document.getElementById('post_status').innerText = post.status;
-            document.getElementById('post_imagem').src = "{{ asset('storage/' . $post->imagem) }}";
+            document.getElementById('post_imagem').src = "{{ asset('storage') }}/" + post.imagem;
             document.getElementById('post_descricao').innerText = post.descricao;
 
             // Mostrar o modal
             $('#verPostModal').modal('show');
         }
+
+      
     </script>
     @endif
 </x-app-layout>
