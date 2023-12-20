@@ -16,6 +16,13 @@
                     @if($posts->isEmpty())
                     <p>Não há posts criados.</p>
                     @else
+
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
                     <table class="table">
                         <thead>
                             <tr>
@@ -36,7 +43,7 @@
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button class="btn btn-primary" onclick="verPost({{ json_encode($post) }})">Ver</button>
-                                        <button class="btn btn-warning" style="margin-left: 5px">Editar</button>
+                                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning" style="margin-left: 5px">Editar</a>
                                         <form method="POST" action="{{ route('posts.destroy', $post->id) }}" class="d-inline">
                                             @csrf
                                             @method('DELETE')

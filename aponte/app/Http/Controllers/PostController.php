@@ -74,18 +74,52 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        //
+        $category = Category::all(); // Substitua 'Categoria' pelo nome do seu modelo de categoria
+    
+        return view('posts.edit', compact('post', 'category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // Validação dos dados do formulário
+        $request->validate([
+            'titulo' => 'required|max:255',
+            'categoria_id' => 'required',
+            'telefone' => 'required|max:15',
+            'endereco' => 'required|max:255',
+            'descricao' => 'required',
+            'imagem' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // Adicione outras regras de validação conforme necessário
+        ]);
+    
+        // Obtém o post a ser atualizado
+        $post = Post::findOrFail($id);
+    
+        // Atualiza os dados do post
+        $post->titulo = $request->titulo;
+        $post->categoria_id = $request->categoria_id;
+        $post->telefone = $request->telefone;
+        $post->endereco = $request->endereco;
+        $post->descricao = $request->descricao;
+    
+        // Atualiza a imagem, se fornecida
+        if ($request->hasFile('imagem')) {
+            $imagemPath = $request->file('imagem')->store('imagens');
+            $post->imagem = $imagemPath;
+        }
+    
+        // Salva as alterações
+        $post->save();
+    
+        // Redireciona com uma mensagem de sucesso
+        return redirect()->route('posts.index')->with('success', 'Post atualizado com sucesso.');
     }
+    
 
     /**
      * Remove the specified resource from storage.
