@@ -23,6 +23,12 @@
                         </div>
                     @endif
 
+                    @if(session('sucesso'))
+                    <div class="alert alert-success">
+                        {{ session('sucesso') }}
+                    </div>
+                    @endif
+
                     <table class="table">
                         <thead>
                             <tr>
@@ -49,6 +55,12 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger" style="margin-left: 5px;">Excluir</button>
                                         </form>
+                                        <form method="POST" action="{{ route('mudar.status', ['postId' => $post->id]) }}" class="d-inline">
+                                            @csrf
+                                            <input type="hidden" name="status" value="Aguardando">
+                                            <button type="submit" class="btn btn-success" style="margin-left: 5px;">Mudar Status</button>
+                                        </form>
+                                        
                                     </div>
                                 </td>
                             </tr>
@@ -107,6 +119,30 @@
             // Mostrar o modal
             $('#verPostModal').modal('show');
         }
+
+        function mudarStatus(postId, currentStatus) {
+        // Implemente a lógica para mudar o status (por exemplo, fazer uma requisição AJAX)
+
+        // Exemplo: Você pode usar o jQuery para fazer uma requisição AJAX
+        $.ajax({
+            url: '/mudar-status/' + postId, // Substitua pela rota real em sua aplicação
+            method: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                current_status: currentStatus,
+            },
+            success: function (response) {
+                // Atualize a interface ou faça outras ações conforme necessário
+                alert('Status do post alterado com sucesso!');
+                // Recarregue a página ou atualize dinamicamente a tabela, se necessário
+                location.reload();
+            },
+            error: function (error) {
+                alert('Erro ao mudar o status do post.');
+                console.error(error);
+            },
+        });
+    }
 
       
     </script>
