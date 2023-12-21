@@ -12,17 +12,33 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $userId = auth()->user()->id;
+    // public function index()
+    // {
+    //     $userId = auth()->user()->id;
 
-        $posts = Post::where('user_id', $userId)
-        ->orderBy('created_at', 'desc')
-        ->paginate(6);
+    //     $posts = Post::where('user_id', $userId)
+    //     ->orderBy('created_at', 'desc')
+    //     ->paginate(6);
     
-        return view('posts.index', ['posts' => $posts]);
+    //     return view('posts.index', ['posts' => $posts]);
+    // }
+    public function index()
+{
+    $user = auth()->user();
 
+    if ($user->level == 'admin') {
+        // Se o usuário for um administrador, busque todos os posts
+        $posts = Post::orderBy('created_at', 'desc')->paginate(6);
+    } else {
+        // Se o usuário não for um administrador, busque apenas os posts do usuário
+        $posts = Post::where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->paginate(6);
     }
+
+    return view('posts.index', ['posts' => $posts]);
+}
+
 
     /**
      * Show the form for creating a new resource.
