@@ -71,10 +71,9 @@ $ npm run dev & php artisan serve
 
 ## Tecnologias
 
-### WebSite
-
 - Tailwind
 - Laravel
+- Blade
 - Nodejs
 - Docker
 
