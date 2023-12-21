@@ -55,11 +55,13 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger" style="margin-left: 5px;">Excluir</button>
                                         </form>
+                                        @can('level', 'admin')
                                         <form method="POST" action="{{ route('mudar.status', ['postId' => $post->id]) }}" class="d-inline">
                                             @csrf
                                             <input type="hidden" name="status" value="Aguardando">
                                             <button type="submit" class="btn btn-success" style="margin-left: 5px;">Mudar Status</button>
                                         </form>
+                                        @endcan
                                         
                                     </div>
                                 </td>
