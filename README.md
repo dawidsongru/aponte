@@ -83,5 +83,4 @@ $ npm run dev & php artisan serve
 Agradecemos aos seguintes contribuidores:
 
 - Dawidson Pereira
-- Ênrell Jeronimo
 - Ivan Teotônio
